@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Member Update</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<a href="/logout">Log out</a> <br>
+<a href="/admin/home">Back to Home</a><br>
+<a href="/admin/members">Back to Member Page</a><br>
+
+
+<form action="/admin/members/update" method="post" class="admin-form">
+    <input type="hidden" name="id" th:value="${member.id}">
+    <input type="text" name="name" th:value="${member.name}"><br>
+    <input type="text" name="surname" th:value="${member.surname}"><br>
+    <input type="email" name="email" th:value="${member.email}"><br>
+    <input type="hidden" name="password" th:value="${member.password}"><br>
+    Role:
+    <div th:if="${member.getUserType().toString()} == 'ADMIN' ">
+        <label>
+            <input type="radio" name="userType" value="USER">
+            USER
+        </label>
+        <label>
+            <input type="radio" name="userType" value="ADMIN" checked>
+            ADMIN
+        </label>
+        <br>
+    </div>
+    <div th:if="${member.getUserType().toString()} == 'USER' ">
+        <label>
+            <input type="radio" name="userType" value="USER" checked>
+            USER
+        </label>
+        <label>
+            <input type="radio" name="userType" value="ADMIN">
+            ADMIN
+        </label>
+        <br>
+    </div>
+    <input type="submit" value="Update">
+</form>
+</body>
+</html>

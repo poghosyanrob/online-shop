@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Product</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<a href="/logout">Log out</a> <br>
+<a href="/admin/product">Back to Product List Page</a><br>
+<a href="/admin/home">Back to Home</a><br>
+
+<h1>Add Member</h1>
+<form action="/admin/product/add" method="post" enctype="multipart/form-data" class="admin-form">
+    <input type="text" name="title" placeholder="Title"><br>
+    <input type="number" name="price" placeholder="Price"><br>
+    <input type="text" name="description" placeholder="Description"><br>
+    <input type="file" name="pic"><br>
+
+    <select name="category.id">
+        <option th:each="category : ${categories}"
+                th:value="${category.id}"
+                th:text="${category.name}"></option>
+    </select><br>
+    <input type="hidden" name="user.id" th:value="${user.id}">
+
+    <input type="submit" value="Add Product">
+</form>
+</body>
+</html>

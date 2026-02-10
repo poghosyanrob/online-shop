@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Category page</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<a href="/logout">Log out</a> <br>
+<a href="/category/add" th:if="${user.getUserType().toString()} == 'ADMIN' ">Add Category</a><br>
+<a href="/home">Back to Home</a><br>
+
+Category
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th  th:if="${user.getUserType().toString()} == 'ADMIN' ">Action</th>
+    </tr>
+    <tr th:each="category : ${categories}">
+        <td th:text="${category.id}"></td>
+        <td th:text="${category.name}"></td>
+        <td th:if="${user.getUserType().toString()} == 'ADMIN' ">
+            <a th:href="@{/category/delete(id=${category.id})}">Delete</a> |
+            <a th:href="@{/category/update(id=${category.id})}">Update</a>
+        </td>
+    </tr>
+</table>
+
+</body>
+</html>

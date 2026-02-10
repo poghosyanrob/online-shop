@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Members Page</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+
+<a href="/logout">Log out</a> <br>
+<a href="/admin/home">Back to Home</a><br>
+
+Members
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Surname</th>
+        <th>Email</th>
+        <th>User Type</th>
+        <th>Action</th>
+    </tr>
+    <tr th:each="member : ${members}">
+        <td th:text="${member.id}"></td>
+        <td th:text="${member.name}"></td>
+        <td th:text="${member.surname}"></td>
+        <td th:text="${member.email}"></td>
+        <td>
+            <span th:if="${member.userType.name() == 'ADMIN'}" class="badge-admin">ADMIN</span>
+            <span th:if="${member.userType.name() == 'USER'}" class="badge-user">USER</span>
+        </td>
+        <td>
+            <a th:href="@{/admin/members/delete(id=${member.id})}">Delete</a> |
+            <a th:href="@{/admin/members/update(id=${member.id})}">Update</a>
+        </td>
+    </tr>
+</table>
+
+
+</body>
+</html>

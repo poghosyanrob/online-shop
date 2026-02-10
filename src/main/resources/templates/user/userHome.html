@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>User Home Page</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<p>
+    Hi <span th:text="${user.name}"></span> <span th:text="${user.surname}"></span>
+</p>
+<a href="/logout">Log out</a> <br>
+<a href="/home">Back to Home</a>
+<h1>Category</h1>
+
+<select onchange="
+    if (this.value == '') {
+        window.location.href = '/user/home';
+    } else {
+        window.location.href = '/user/home?categoryId=' + this.value;
+    }">
+    <option value=""
+            th:selected="${selectedCategoryId == null }">
+        All
+    </option>
+    <option th:each="category : ${categories}"
+            th:value="${category.id}"
+            th:text="${category.name}"
+            th:selected="${category.id == selectedCategoryId}"></option>
+</select><br>
+
+
+<table>
+    <tr>
+        <th>Picture</th>
+        <th>Title</th>
+        <th>Price</th>
+    </tr>
+    <tr th:each="product : ${products}">
+        <td>
+            <a th:href="@{/user/product/own/page(id=${product.id})}">
+                <img th:if="${product.getPicName() != null && !product.getPicName().equals('')}" th:src="@{/image/get(pic=${product.picName})}" >
+                <img th:if="${product.getPicName() == null || product.getPicName().equals('')}" th:src="@{/image/img.png}" >
+            </a>
+        </td>
+        <td>
+            <a th:href="@{/user/product/own/page(id=${product.id})}"
+               th:text="${product.title}"></a>
+        </td>
+        <td th:text="${product.price}"></td>
+    </tr>
+</table>
+
+
+</body>
+</html>

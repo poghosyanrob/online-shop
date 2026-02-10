@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Product Own Page</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<a href="/logout">Log out</a> <br>
+<a href="/user/home">Back to Home</a>
+
+<h1>Products</h1>
+
+<div class="product-wrapper">
+
+<div class="product-image">
+    <img th:if="${product.getPicName() != null && !product.getPicName().equals('')}" th:src="@{/image/get(pic=${product.picName})}" >
+    <img th:if="${product.getPicName() == null || product.getPicName().equals('')}" th:src="@{/image/img.png}" >
+</div>
+    <div class="product-info">
+        <p>Title: <span th:text="${product.title}"></span></p>
+        <p>Price: <span th:text="${product.price}"></span></p>
+        <p>Description: <span th:text="${product.description}"></span></p>
+        <p>Date: <span th:text="${product.createdAt}"></span></p>
+        <p>Category: <span th:text="${product.category.name}"></span></p>
+        <p>User: <span th:text="${product.user.name}"></span></p>
+    </div>
+</div>
+
+<h2>Comments</h2>
+<table>
+    <tr>
+        <th>Comment</th>
+        <th>User</th>
+        <th>Action</th>
+    </tr>
+    <tr th:each="comment : ${comments}">
+        <td th:text="${comment.comment}"></td>
+        <td th:text="${comment.user.name}"></td>
+        <td>
+            <a th:href="@{/user/comment/delete(id=${comment.id}, productId=${product.id})}">Delete</a>
+        </td>
+    </tr>
+</table>
+
+<h2>Add Comments</h2>
+    <form action="/user/comment/add" method="post">
+        <textarea name="comment" placeholder="Comment"></textarea><br>
+        <input type="hidden" name="productId" th:value="${product.id}">
+        <input type="submit" value="Add Comment">
+    </form>
+
+</body>
+</html>
