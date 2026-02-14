@@ -6,7 +6,8 @@
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-<a href="/logout">Log out</a> <br>
+<th:block th:insert="fragments/HeaderFragment::header"></th:block>
+
 <a href="/category">Back to Category page</a> <br>
 <h1>Add Category</h1>
 <form action="/category/add" method="post" class="admin-form">

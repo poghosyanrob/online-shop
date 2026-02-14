@@ -8,8 +8,9 @@
 <body>
 
 
-<a href="/logout">Log out</a> <br>
-<a href="/admin/home">Back to Home</a><br>
+<th:block th:insert="fragments/HeaderFragment::header"></th:block>
+ <br>
+<a href="/admin/home" th:text="#{header.backHome}"></a><br>
 
 Members
 <table>

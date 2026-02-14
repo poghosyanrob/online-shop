@@ -7,21 +7,22 @@
 </head>
 <body>
 
-<a href="/logout">Log out</a> <br>
-<a href="/category/add" th:if="${user.getUserType().toString()} == 'ADMIN' ">Add Category</a><br>
-<a href="/home">Back to Home</a><br>
+<th:block th:insert="fragments/HeaderFragment::header"></th:block>
+ <br>
+<a href="/category/add" th:if="${currentUser.getUserType().toString()} == 'ADMIN' ">Add Category</a><br>
+<a href="/home" th:text="#{header.backHome}"></a><br>
 
 Category
 <table>
     <tr>
         <th>Id</th>
         <th>Name</th>
-        <th  th:if="${user.getUserType().toString()} == 'ADMIN' ">Action</th>
+        <th  th:if="${currentUser.getUserType().toString()} == 'ADMIN' ">Action</th>
     </tr>
     <tr th:each="category : ${categories}">
         <td th:text="${category.id}"></td>
         <td th:text="${category.name}"></td>
-        <td th:if="${user.getUserType().toString()} == 'ADMIN' ">
+        <td th:if="${currentUser.getUserType().toString()} == 'ADMIN' ">
             <a th:href="@{/category/delete(id=${category.id})}">Delete</a> |
             <a th:href="@{/category/update(id=${category.id})}">Update</a>
         </td>

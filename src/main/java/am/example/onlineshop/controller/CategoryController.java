@@ -1,11 +1,8 @@
 package am.example.onlineshop.controller;
 
 import am.example.onlineshop.model.Category;
-import am.example.onlineshop.model.User;
 import am.example.onlineshop.service.CategoryService;
-import am.example.onlineshop.service.security.SpringUser;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,12 +19,9 @@ public class CategoryController {
     private final CategoryService categoryService;
 
     @GetMapping("/category")
-    public String categories(ModelMap modelMap,
-                             @AuthenticationPrincipal SpringUser userPrincipal) {
+    public String categories(ModelMap modelMap) {
         List<Category> categories = categoryService.findAll();
-        User user = userPrincipal.getUser();
         modelMap.addAttribute("categories", categories);
-        modelMap.addAttribute("user",user);
         return "category/category";
     }
 

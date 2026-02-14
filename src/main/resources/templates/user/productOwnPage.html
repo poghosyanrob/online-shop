@@ -6,8 +6,9 @@
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-<a href="/logout">Log out</a> <br>
-<a href="/user/home">Back to Home</a>
+<th:block th:insert="fragments/HeaderFragment::header"></th:block>
+ <br>
+<a href="/user/home" th:text="#{header.backHome}"></a>
 
 <h1>Products</h1>
 

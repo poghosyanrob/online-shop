@@ -6,9 +6,10 @@
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-<a href="/logout">Log out</a> <br>
+<th:block th:insert="fragments/HeaderFragment::header"></th:block>
+ <br>
 <a href="/admin/product">Back to Product List Page</a><br>
-<a href="/admin/home">Back to Home</a><br>
+<a href="/admin/home" th:text="#{header.backHome}"></a><br>
 
 <h1>Add Member</h1>
 <form action="/admin/product/update" method="post" enctype="multipart/form-data" class="admin-form">

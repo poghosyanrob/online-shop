@@ -3,13 +3,10 @@ package am.example.onlineshop.controller;
 import am.example.onlineshop.model.Category;
 import am.example.onlineshop.model.Comment;
 import am.example.onlineshop.model.Product;
-import am.example.onlineshop.model.User;
 import am.example.onlineshop.service.CategoryService;
 import am.example.onlineshop.service.CommentService;
 import am.example.onlineshop.service.ProductService;
-import am.example.onlineshop.service.security.SpringUser;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,10 +26,7 @@ public class ProductController {
     private final CommentService commentService;
 
     @GetMapping("/admin/product")
-    public String products(ModelMap modelMap,
-                           @AuthenticationPrincipal SpringUser userPrincipal) {
-        User user = userPrincipal.getUser();
-        modelMap.addAttribute("user",user);
+    public String products(ModelMap modelMap) {
         List<Product> products = productService.findAll();
         modelMap.addAttribute("products", products);
         products.forEach(product -> {
@@ -43,10 +37,7 @@ public class ProductController {
     }
 
     @GetMapping("/admin/product/add")
-    public String addProduct(ModelMap modelMap,
-                             @AuthenticationPrincipal SpringUser userPrincipal) {
-        User user = userPrincipal.getUser();
-        modelMap.addAttribute("user",user);
+    public String addProduct(ModelMap modelMap) {
         List<Category> categories = categoryService.findAll();
         modelMap.addAttribute("categories",categories);
         return "admin/product/addProduct";

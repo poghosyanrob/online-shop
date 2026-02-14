@@ -9,11 +9,13 @@
 
 <div class="admin-header">
     <p>
-        Hi <span th:text="${user.name}"></span>
-        <span th:text="${user.surname}"></span>
+        <span th:text="#{header.welcome}"></span>
+        <span th:text="${currentUser.name}"></span>
+        <span th:text="${currentUser.surname}"></span>
     </p>
 
-    <a href="/logout">Log out</a>
+    <th:block th:insert="fragments/HeaderFragment::header"></th:block>
+
 </div>
 
 <div class="dashboard">

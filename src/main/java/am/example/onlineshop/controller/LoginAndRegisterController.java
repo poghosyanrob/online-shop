@@ -30,7 +30,7 @@ public class LoginAndRegisterController {
     }
 
     @PostMapping("/register")
-    public String register(@ModelAttribute User user) {
+    public String register(@ModelAttribute User user,@RequestParam String email) {
         if (userService.findByEmail(user.getEmail()).isPresent()) {
             return "redirect:/register?msg=Email already exists!";
         }

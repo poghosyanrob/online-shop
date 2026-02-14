@@ -7,10 +7,13 @@
 </head>
 <body>
 <p>
-    Hi <span th:text="${user.name}"></span> <span th:text="${user.surname}"></span>
+    <span th:text="#{header.welcome}"></span>
+    <span th:text="${currentUser.name}"></span>
+    <span th:text="${currentUser.surname}"></span>
 </p>
-<a href="/logout">Log out</a> <br>
-<a href="/home">Back to Home</a>
+    <th:block th:insert="fragments/HeaderFragment::header"></th:block>
+ <br>
+<a href="/home" th:text="#{header.backHome}"></a>
 <h1>Category</h1>
 
 <select onchange="

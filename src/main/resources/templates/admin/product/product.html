@@ -7,9 +7,10 @@
 </head>
 <body>
 
-<a href="/logout">Log out</a> <br>
+<th:block th:insert="fragments/HeaderFragment::header"></th:block>
+ <br>
 <a href="/admin/product/add">Add Product</a><br>
-<a href="/admin/home">Back to Home</a><br>
+<a href="/admin/home" th:text="#{header.backHome}"></a><br>
 
 <h1>Products</h1>
 
@@ -45,40 +46,5 @@
     </div>
 
 </div>
-
-<!--<table>-->
-<!--    <tr>-->
-<!--        <th>Picture</th>-->
-<!--        <th>Id</th>-->
-<!--        <th>Title</th>-->
-<!--        <th>Price</th>-->
-<!--        <th>Description</th>-->
-<!--        <th>Date</th>-->
-<!--        <th>Category</th>-->
-<!--        <th>User</th>-->
-<!--        <th>Comments</th>-->
-<!--        <th>Action</th>-->
-<!--    </tr>-->
-<!--    <tr th:each="product : ${products}">-->
-<!--        <td>-->
-<!--            <img th:if="${product.getPicName() != null && !product.getPicName().equals('')}" th:src="@{/image/get(pic=${product.picName})}">-->
-<!--            <img th:if="${product.getPicName() == null || product.getPicName().equals('')}" th:src="@{/image/img.png}">-->
-<!--        </td>-->
-<!--        <td th:text="${product.id}"></td>-->
-<!--        <td th:text="${product.title}"></td>-->
-<!--        <td th:text="${product.price}"></td>-->
-<!--        <td th:text="${product.description}"></td>-->
-<!--        <td th:text="${product.createdAt}"></td>-->
-<!--        <td th:text="${product.category.name}"></td>-->
-<!--        <td th:text="${product.user.name}"></td>-->
-<!--        <td th:each="comment :${product.getComments()}">-->
-<!--            <span th:text="${comment.comment}"></span><br>-->
-<!--        </td>-->
-<!--        <td>-->
-<!--            <a th:href="@{/admin/product/delete(id=${product.id})}">Delete</a> |-->
-<!--            <a th:href="@{/admin/product/update(id=${product.id})}">Update</a>-->
-<!--        </td>-->
-<!--    </tr>-->
-<!--</table>-->
 </body>
 </html>
