@@ -1,12 +1,12 @@
 package am.example.onlineshop.controller;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class PaymentController {
 
-    @PostMapping("/pay")
+    @GetMapping("/pay")
     public String pay(){
         return "pay";
     }
