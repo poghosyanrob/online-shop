@@ -11,7 +11,7 @@
     <span th:text="${currentUser.name}"></span>
     <span th:text="${currentUser.surname}"></span>
 </p>
-    <th:block th:insert="fragments/HeaderFragment::header"></th:block>
+    <th:block th:replace="~{fragments/HeaderFragment::header}"></th:block>
  <br>
 <a href="/home" th:text="#{header.backHome}"></a>
 <h1>Category</h1>

@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-<th:block th:insert="fragments/HeaderFragment::header"></th:block>
+<th:block th:replace="~{fragments/HeaderFragment::header}"></th:block>
  <br>
 <a href="/admin/product">Back to Product List Page</a><br>
 <a href="/admin/home" th:text="#{header.backHome}"></a><br>

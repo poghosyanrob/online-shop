@@ -8,7 +8,7 @@
 <body>
 
 
-<th:block th:insert="fragments/HeaderFragment::header"></th:block>
+<th:block th:replace="~{fragments/HeaderFragment::header}"></th:block>
  <br>
 <a href="/admin/home" th:text="#{header.backHome}"></a><br>
 
@@ -37,6 +37,14 @@ Members
         </td>
     </tr>
 </table>
+
+
+<div th:if="${members.totalPages > 0}"
+    th:each="pageNumber : ${pageNumbers}">
+        <a th:href="@{/admin/members(size=${members.size}, page=${pageNumber})}"
+            th:text="${pageNumber}"
+            th:class="${pageNumber == members.number + 1} ? active"></a>
+</div>
 
 
 </body>

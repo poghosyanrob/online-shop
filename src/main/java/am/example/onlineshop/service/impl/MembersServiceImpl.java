@@ -4,6 +4,8 @@ import am.example.onlineshop.model.User;
 import am.example.onlineshop.repository.MembersRepository;
 import am.example.onlineshop.service.MembersService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,8 +18,8 @@ public class MembersServiceImpl implements MembersService {
     private final MembersRepository membersRepository;
 
     @Override
-    public List<User> findAll() {
-        return membersRepository.findAll();
+    public Page<User> findAll(Pageable pageable) {
+        return membersRepository.findAll(pageable);
     }
 
     @Override

@@ -1,0 +1,28 @@
+spring:
+  application:
+    name: online-shop
+  datasource:
+    url: jdbc:mysql://localhost:3306/online_shop
+    username: ${DB_USERNAME:root}
+    password: ${DB_PASSWORD:root7}
+  servlet:
+    multipart:
+      max-file-size: 5MB
+logging:
+  file:
+    name: C:\Users\myuser\Desktop\online-shop\log\online-shop-spring.log
+  logback:
+    rollingpolicy:
+      max-file-size: 10MB
+      max-history: 5
+  level:
+    root: info
+
+
+online:
+  shop:
+    system:
+      upload:
+        image:
+          directory:
+            path: C:/Users/myuser/Desktop/online-shop/upload-images/
