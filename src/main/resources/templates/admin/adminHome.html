@@ -14,7 +14,7 @@
         <span th:text="${currentUser.surname}"></span>
     </p>
 
-    <th:block th:insert="fragments/HeaderFragment::header"></th:block>
+    <th:block th:replace="~{fragments/HeaderFragment::header}"></th:block>
 
 </div>
 

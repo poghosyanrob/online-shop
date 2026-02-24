@@ -5,6 +5,7 @@ import am.example.onlineshop.model.Product;
 import am.example.onlineshop.repository.ProductRepository;
 import am.example.onlineshop.service.ProductService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -16,6 +17,7 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class ProductServiceImpl implements ProductService {
 
     private final ProductRepository productRepository;
@@ -43,7 +45,7 @@ public class ProductServiceImpl implements ProductService {
                 multipartFile.transferTo(file);
                 product.setPicName(fileName);
             } catch (IOException e) {
-                e.printStackTrace();
+                log.error("Error while saving image for product {} : {}", product.getTitle(), e.getMessage());
             }
         } else {
             productRepository.findById(product.getId())

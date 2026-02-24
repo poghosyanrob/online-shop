@@ -1,6 +1,5 @@
 package am.example.onlineshop.service.impl;
 
-import am.example.onlineshop.model.Category;
 import am.example.onlineshop.model.Comment;
 import am.example.onlineshop.model.Product;
 import am.example.onlineshop.repository.CommentRepository;
