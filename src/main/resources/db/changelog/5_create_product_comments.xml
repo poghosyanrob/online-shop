@@ -1,0 +1,30 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="5" author="robpoghosyan">
+        <preConditions>
+            <not>
+                <tableExists tableName="product_comments"/>
+            </not>
+        </preConditions>
+        <createTable tableName="product_comments">
+            <column name="product_id" type="bigint">
+                <constraints
+                        nullable="false"
+                        foreignKeyName="fk_product_comments_product"
+                        referencedTableName="product"
+                        referencedColumnNames="id"
+                />
+            </column>
+            <column name="comment_id" type="bigint">
+                <constraints
+                        nullable="false"
+                        foreignKeyName="fk_product_comments_comment"
+                        referencedTableName="comment"
+                        referencedColumnNames="id"
+                />
+            </column>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>

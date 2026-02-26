@@ -1,0 +1,70 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+
+
+
+    <changeSet id="2" author="robpoghosyan">
+        <preConditions>
+            <not>
+                <tableExists tableName="category"/>
+            </not>
+        </preConditions>
+        <createTable tableName="category">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints unique="true" primaryKey="true"/>
+            </column>
+            <column name="name" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="3" author="robpoghosyan">
+        <preConditions>
+            <not>
+                <tableExists tableName="product"/>
+            </not>
+        </preConditions>
+        <createTable tableName="product">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints unique="true" primaryKey="true"/>
+            </column>
+            <column name="title" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="price" type="decimal">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="pic_name" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="created_at" type="date">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="category_id" type="bigint">
+                <constraints
+                        nullable="false"
+                        foreignKeyName="fk_product_category"
+                        referencedTableName="category"
+                        referencedColumnNames="id"
+                />
+            </column>
+            <column name="user_id" type="bigint">
+                <constraints
+                        nullable="false"
+                        foreignKeyName="fk_product_user"
+                        referencedTableName="user"
+                        referencedColumnNames="id"
+                />
+            </column>
+        </createTable>
+    </changeSet>
+
+
+
+</databaseChangeLog>

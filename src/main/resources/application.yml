@@ -1,4 +1,7 @@
 spring:
+  liquibase:
+    change-log: classpath:/db/master.xml
+    enabled: true
   application:
     name: online-shop
   datasource:
