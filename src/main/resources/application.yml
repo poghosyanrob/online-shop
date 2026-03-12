@@ -10,11 +10,11 @@ spring:
   servlet:
     multipart:
       max-file-size: 5MB
-
   mail:
     host: smtp.gmail.com
     port: 587
     username: rob.poghosyan.g@gmail.com
+    password: thce rqeo ggra hsif
     properties:
       mail:
         smtp:
