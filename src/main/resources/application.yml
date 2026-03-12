@@ -6,8 +6,6 @@ spring:
     name: online-shop
   datasource:
     url: jdbc:mysql://localhost:3306/online_shop
-    username: ${DB_USERNAME:root}
-
   servlet:
     multipart:
       max-file-size: 5MB
