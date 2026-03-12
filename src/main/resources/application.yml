@@ -11,17 +11,7 @@ spring:
   servlet:
     multipart:
       max-file-size: 5MB
-  mail:
-    host: smtp.gmail.com
-    port: 587
-    username: rob.poghosyan.g@gmail.com
-    password: thce rqeo ggra hsif
-    properties:
-      mail:
-        smtp:
-          auth: true
-          starttls:
-            enable: true
+
 logging:
   file:
     name: C:\Users\myuser\Desktop\online-shop\log\online-shop-spring.log
