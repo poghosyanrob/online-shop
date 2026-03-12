@@ -2,6 +2,7 @@ package am.example.onlineshop.service.impl;
 
 import am.example.onlineshop.model.User;
 import am.example.onlineshop.repository.UserRepository;
+import am.example.onlineshop.service.SendMailService;
 import am.example.onlineshop.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -15,11 +16,14 @@ public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
+    private final SendMailService sendMailService;
 
     @Override
     public void save(User user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         userRepository.save(user);
+        sendMailService.sendMail(user.getEmail(), "Welcome to Online Shop",
+                "Thank you for registering with us!  please login http://localhost:8080/loginPage");
 
     }
 
